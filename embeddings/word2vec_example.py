@@ -120,7 +120,7 @@ print("all_embeddings[idea]", all_embeddings[word2id["idea"]])
 
 # Persistance
 # import pickle
-# pickle.dump(model.embedding, open("embeddinåg.pickle", "w"))
+# pickle.dump(model.embedding, open("embedding.pickle", "w"))
 
 import cPickle as pickle
 
