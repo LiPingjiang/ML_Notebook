@@ -4,6 +4,15 @@ from torch.autograd import Variable
 import torch.nn.functional as F
 import numpy
 
+##############
+#
+# Author: Li Pingjiang
+# Date: 2018.01.08
+#
+#
+#
+##############
+
 CONTEXT_SIZE = 2  # 2 words to the left, 2 to the right
 EMBED_DIM = 100  # dimension of embedding
 raw_text = "We are about to study the idea of a computational process. Computational processes are abstract beings that inhabit computers. As they evolve, processes manipulate other abstract things called data. The evolution of a process is directed by a pattern of rules called a program. People create programs to direct processes. In effect, we conjure the spirits of the computer with our spells.".split(
@@ -30,6 +39,7 @@ class CBOW(nn.Module):
     def __init__(self, n_word, n_dim, context_size):
         super(CBOW, self).__init__()
         self.embedding = nn.Embedding(n_word, n_dim)
+        # print("embedding",self.embedding.weight)
         # before and after is 2 words, 2*2 intotal, mutiply the dimensiton of embedding
         # input is the embedding list of nearby words(2 before and 2 after)
         # output is defined by experience
@@ -124,7 +134,7 @@ print("all_embeddings[idea]", all_embeddings[word2id["idea"]])
 
 import cPickle as pickle
 
-pickle.dump(model.embedding, open("embedding.pickle", "w"), True)  # press
+pickle.dump(model.embedding, open("embedding.pickle", "w"), True)  # compress
 
 ebeddings = pickle.load(open("embedding.pickle", "r"))
 
